@@ -8,9 +8,11 @@ namespace Logic.Cables
         public static CableBuilder Main { get; private set; }
 
         [SerializeField] private GameObject _cableObject;
+        [SerializeField] private GameObject _mouseNode;
         [SerializeField] private string _nodeIOTag;
 
         private GameObject _startingNode;
+        private GameObject _tempCable;
         private bool _isInput;
         private bool _unselectNextFrame = false;
 
@@ -23,7 +25,20 @@ namespace Logic.Cables
         {
             if (Input.GetMouseButtonUp(0))
             {
+                if(_tempCable != null)
+                {
+                    Destroy(_tempCable);
+                    _tempCable = null;
+                }
+
                 CheckMouseOverObject();
+                _startingNode = null;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                _mouseNode.transform.position = new Vector3(mouse.x, mouse.y, 0f);
             }
         }
 
@@ -48,6 +63,13 @@ namespace Logic.Cables
         {
             _startingNode = node;
             _isInput = isInput;
+
+            _tempCable = Instantiate(_cableObject);
+            CableRenderer renderer = _tempCable.GetComponent<CableRenderer>();
+            if(isInput)
+                renderer.SetNodes(_mouseNode, node);
+            else
+                renderer.SetNodes(node, _mouseNode);
         }
 
         /// <summary>
@@ -64,9 +86,10 @@ namespace Logic.Cables
 
             GameObject cable = Instantiate(_cableObject);
             CableRenderer renderer = cable.GetComponent<CableRenderer>();
-            renderer.SetNodes(_startingNode, node);
-
-            _startingNode = null;
+            if(_isInput)
+                renderer.SetNodes(node, _startingNode);
+            else
+                renderer.SetNodes(_startingNode, node);
         }
     }
 }
