@@ -6,7 +6,7 @@ Made in Unity 6000.0.18f1
 
 - [ ] Diagrams for each logic circuit
 - [ ] Switches / Buttons
-- [ ] Camera functionality (moving, zooming etc)
+- [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
 - [x] Connecting gates with wires
 - [ ] Selecting wires to then delete
