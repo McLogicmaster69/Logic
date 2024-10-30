@@ -8,7 +8,7 @@ Made in Unity 6000.0.18f1
 - [ ] Switches / Buttons
 - [ ] Camera functionality (moving, zooming etc)
 - [ ] Labels
-- [ ] Connecting gates with wires
+- [x] Connecting gates with wires
 - [ ] Selecting wires to then delete
 - [ ] Menus
 - [ ] Adding gates from menus
