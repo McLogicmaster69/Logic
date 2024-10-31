@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 196665773}
   - component: {fileID: 196665772}
   - component: {fileID: 196665771}
+  - component: {fileID: 196665775}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -221,6 +222,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &196665775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196665770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3f96c5771203649abf082555503389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuObject: {fileID: 1379442557}
+  _expandObject: {fileID: 282457073}
 --- !u!1 &282457073
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 282457076}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 196665775}
+        m_TargetAssemblyTypeName: Logic.UI.UINavigator, Assembly-CSharp
+        m_MethodName: ExpandMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &282457076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,7 +1258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2128730237}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 196665775}
+        m_TargetAssemblyTypeName: Logic.UI.UINavigator, Assembly-CSharp
+        m_MethodName: CollapseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2128730237
 MonoBehaviour:
   m_ObjectHideFlags: 0
