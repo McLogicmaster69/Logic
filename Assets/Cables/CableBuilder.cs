@@ -36,12 +36,12 @@ namespace Logic.Cables
             }
 
             if (Input.GetMouseButton(0))
-            {
-                Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                _mouseNode.transform.position = new Vector3(mouse.x, mouse.y, 0f);
-            }
+                _mouseNode.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
+        /// <summary>
+        /// Checks if the mouse is over the objectt
+        /// </summary>
         private void CheckMouseOverObject()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
