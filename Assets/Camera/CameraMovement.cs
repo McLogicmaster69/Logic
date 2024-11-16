@@ -7,12 +7,12 @@ namespace Logic.cam
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _shiftMultiplier = 2f;
         [SerializeField] private int _zoom = 5;
+        [SerializeField] private int _minZoom = 3;
         [SerializeField] private int _maxZoom = 20;
         private Camera _camera;
 
-        private readonly Vector3 RIGHT_VECTOR = new Vector3(1f, 0f, -1f);
-        private readonly Vector3 FOWARD_VECTOR = new Vector3(1f, 0f, 1f);
-
+        private readonly Vector3 RIGHT_VECTOR = new Vector3(1f, 0f, 0f);
+        private readonly Vector3 FOWARD_VECTOR = new Vector3(0f, 1f, 0f);
         private void Start()
         {
             _camera = GetComponent<Camera>();
@@ -27,7 +27,7 @@ namespace Logic.cam
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                if (_zoom > 1)
+                if (_zoom > _minZoom)
                     _zoom--;
             }
             if (Input.GetAxis("Mouse ScrollWheel") < 0)
