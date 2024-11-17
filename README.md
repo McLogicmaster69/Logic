@@ -4,12 +4,14 @@ Made in Unity 6000.0.18f1
 
 # Stuff that needs to get done
 
-- [ ] Built in gates:
--- [x] AND
--- [x] OR
--- [ ] NOT
--- [ ] XOR
--- [ ] NAND
+Gates (functionality and sprites):
+- [x] AND
+- [x] OR
+- [ ] NOT
+- [ ] XOR
+- [ ] NAND
+
+Features:
 - [ ] Switches / Buttons
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
