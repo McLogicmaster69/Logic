@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3040753839096390093}
   - component: {fileID: 343911987871149053}
   - component: {fileID: 8296763386301725604}
+  - component: {fileID: 5722789766695099030}
   m_Layer: 0
   m_Name: InputB
   m_TagString: NodeIO
@@ -92,6 +93,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5722789766695099030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342877685945339219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06487a5f489926244b8ed6b521fef10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pinMode: 0
+  _gate: {fileID: 3770909918405856400}
 --- !u!1 &3726678272517138229
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,8 +119,10 @@ GameObject:
   - component: {fileID: 7170435713260939072}
   - component: {fileID: 8377157648596750782}
   - component: {fileID: 2842055194715683565}
+  - component: {fileID: 3770909918405856400}
+  - component: {fileID: 6095074144859160945}
   m_Layer: 0
-  m_Name: OR Gate
+  m_Name: AND Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 643175062649eb54b8b1c9de3b436ed3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2f498d9f7859fa4a8c5adb9393b00db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -242,6 +259,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.65, y: 0.65}
   m_EdgeRadius: 0
+--- !u!114 &3770909918405856400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3726678272517138229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec50a43cc63ab3140b2f6f1ff904f2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+--- !u!114 &6095074144859160945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3726678272517138229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8847de8c5fcffaf4794f78e48f715c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputPins:
+  - {fileID: 46957696474860696}
+  - {fileID: 5722789766695099030}
 --- !u!1 &6012038877633019836
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +298,7 @@ GameObject:
   - component: {fileID: 7443728857427196056}
   - component: {fileID: 2179488407424398095}
   - component: {fileID: 8450979924850354731}
+  - component: {fileID: 46957696474860696}
   m_Layer: 0
   m_Name: InputA
   m_TagString: NodeIO
@@ -334,6 +380,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &46957696474860696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012038877633019836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06487a5f489926244b8ed6b521fef10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pinMode: 0
+  _gate: {fileID: 3770909918405856400}
 --- !u!1 &7698477974671967454
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +405,7 @@ GameObject:
   - component: {fileID: 1557720211683788506}
   - component: {fileID: 2887097799494002408}
   - component: {fileID: 3515874486455669357}
+  - component: {fileID: 1584680031414244055}
   m_Layer: 0
   m_Name: Output
   m_TagString: NodeIO
@@ -426,3 +487,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1584680031414244055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698477974671967454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06487a5f489926244b8ed6b521fef10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pinMode: 1
+  _gate: {fileID: 3770909918405856400}

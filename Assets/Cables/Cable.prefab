@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8014339146993481747}
   - component: {fileID: 8156107324106258388}
+  - component: {fileID: 1742067786035144223}
   m_Layer: 0
   m_Name: Cable
   m_TagString: Untagged
@@ -57,6 +58,19 @@ MonoBehaviour:
   - {fileID: 3492195055687594214}
   - {fileID: 5544491998028864644}
   - {fileID: 2689215328424674466}
+--- !u!114 &1742067786035144223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693215266220454660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403da02135d6dd6478f0d3727a4e6cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Input: {fileID: 0}
 --- !u!1 &2689215328424674466
 GameObject:
   m_ObjectHideFlags: 0

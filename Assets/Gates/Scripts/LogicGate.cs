@@ -13,29 +13,35 @@ namespace Logic.Nodes
     public class LogicGate : MonoBehaviour
     {
         [SerializeField] private LogicState _state;
-        [SerializeField] private List<CableFlow> _inputs;
+
         public bool Output { get; private set; }
+
+        private PinManager _pins;
+
+        private void Start()
+        {
+            _pins = GetComponent<PinManager>();
+        }
 
         private void Update()
         {
-            SetOutput();
+            Output = GetOutput();
         }
 
-        private void SetOutput()
+        /// <summary>
+        /// Gets the output of the gate
+        /// </summary>
+        protected virtual bool GetOutput()
         {
             switch (_state)
             {
                 case LogicState.AND:
-                    if (_inputs.Count < 2)
-                        return;
-                    Output = _inputs[0].Output && _inputs[1].Output;
-                    break;
+                    return _pins.GetInputPin(0) && _pins.GetInputPin(1);
                 case LogicState.OR:
-                    if (_inputs.Count < 2)
-                        return;
-                    Output = _inputs[0].Output || _inputs[1].Output;
-                    break;
+                    return _pins.GetInputPin(0) || _pins.GetInputPin(1);
             }
+
+            return false;
         }
     }
 }
