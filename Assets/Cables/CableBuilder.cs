@@ -84,12 +84,34 @@ namespace Logic.Cables
             if (node.GetComponent<NodeIO>().IsInput == _isInput)
                 return;
 
+            Pin inputPin;
+            Pin outputPin;
+
+            if (_isInput)
+            {
+                inputPin = node.GetComponent<Pin>();
+                outputPin = _startingNode.GetComponent<Pin>();
+            }
+            else
+            {
+                inputPin = _startingNode.GetComponent<Pin>();
+                outputPin = node.GetComponent<Pin>();
+            }
+
+            if (!outputPin.CanConnectCable())
+                return;
+
             GameObject cable = Instantiate(_cableObject);
             CableRenderer renderer = cable.GetComponent<CableRenderer>();
+            CableFlow flow = cable.GetComponent<CableFlow>();
             if(_isInput)
                 renderer.SetNodes(node, _startingNode);
             else
                 renderer.SetNodes(_startingNode, node);
+
+            inputPin.ConnectCable(flow);
+            outputPin.ConnectCable(flow);
+            flow.SetInputPin(inputPin);
         }
     }
 }

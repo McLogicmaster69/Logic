@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Logic.Cables
 {
@@ -8,8 +9,21 @@ namespace Logic.Cables
         [SerializeField] private GameObject _nodeB;
         [SerializeField] private GameObject[] _cables;
 
+        private SpriteRenderer[] _cableImages;
+
         public const float CABLE_GAP = 0.5f;
         public const float CABLE_WIDTH = 0.1f;
+        public readonly Color ACTIVE_COLOR = new Color(1f, 1f, 1f);
+        public readonly Color INACTIVE_COLOR = new Color(0f, 0f, 0f);
+
+        private void Start()
+        {
+            _cableImages = new SpriteRenderer[5];
+            for (int i = 0; i < 5; i++)
+            {
+                _cableImages[i] = _cables[i].GetComponent<SpriteRenderer>();
+            }
+        }
 
         private void Update()
         {
@@ -82,6 +96,19 @@ namespace Logic.Cables
         {
             _nodeA = nodeA;
             _nodeB = nodeB;
+        }
+
+        /// <summary>
+        /// Changes the color of the cables to show whether there is power going through it or not
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetCableActive(bool active)
+        {
+            Color c = active ? ACTIVE_COLOR : INACTIVE_COLOR;
+            for (int i = 0; i < 5; i++)
+            {
+                _cableImages[i].color = c;
+            }
         }
     }
 }
