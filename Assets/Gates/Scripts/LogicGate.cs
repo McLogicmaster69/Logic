@@ -10,7 +10,7 @@ namespace Logic.Nodes
         OR
     }
 
-    public class LogicGate : Component
+    public class LogicGate : LogicComponent
     {
         [SerializeField] private LogicState _state;
 

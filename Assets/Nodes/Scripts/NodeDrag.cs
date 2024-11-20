@@ -6,20 +6,27 @@ namespace Logic.Nodes
     {
         private Vector2 _difference = Vector2.zero;
         private bool _tempDrag = false;
+        private float _buffer = 0f;
+
+        private const float DRAG_BUFFER = 0.07f;
 
         private void Update()
         {
             DragUntilMouseUp();
+            if (_buffer < DRAG_BUFFER)
+                _buffer += Time.deltaTime;
         }
 
         private void OnMouseDown()
         {
+            _buffer = 0f;
             _difference = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - (Vector2)transform.position;
         }
 
         private void OnMouseDrag()
         {
-            transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - _difference;
+            if(_buffer >= DRAG_BUFFER)
+                transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - _difference;
         }
 
         /// <summary>

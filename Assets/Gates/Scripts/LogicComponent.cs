@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Logic.Nodes
 {
-    public class Component : MonoBehaviour
+    public class LogicComponent : MonoBehaviour
     {
         public bool Output { get; protected set; }
     }

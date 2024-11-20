@@ -12,7 +12,7 @@ namespace Logic.Nodes
     public class Pin : MonoBehaviour
     {
         [SerializeField] private IO _pinMode;
-        [SerializeField] private Component _gate;
+        [SerializeField] private LogicComponent _gate;
 
         public bool Output => _gate.Output;
 
