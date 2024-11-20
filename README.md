@@ -12,7 +12,8 @@ Gates (functionality and sprites):
 - [ ] NAND
 
 Features:
-- [ ] Switches / Buttons
+- [x] Switches
+- [ ] Buttons
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
 - [x] Connecting gates with wires
