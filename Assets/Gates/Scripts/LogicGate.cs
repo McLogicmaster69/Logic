@@ -10,11 +10,9 @@ namespace Logic.Nodes
         OR
     }
 
-    public class LogicGate : MonoBehaviour
+    public class LogicGate : LogicComponent
     {
         [SerializeField] private LogicState _state;
-
-        public bool Output { get; private set; }
 
         private PinManager _pins;
 
