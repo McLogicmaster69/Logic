@@ -7,7 +7,11 @@ namespace Logic.Nodes
     public enum LogicState
     {
         AND,
-        OR
+        OR,
+        NOT,
+        XOR,
+        NAND,
+        NOR
     }
 
     public class LogicGate : LogicComponent
@@ -23,7 +27,7 @@ namespace Logic.Nodes
 
         private void Update()
         {
-            Output = GetOutput();
+            Output[0] = GetOutput();
         }
 
         /// <summary>
@@ -37,6 +41,14 @@ namespace Logic.Nodes
                     return _pins.GetInputPin(0) && _pins.GetInputPin(1);
                 case LogicState.OR:
                     return _pins.GetInputPin(0) || _pins.GetInputPin(1);
+                case LogicState.NOT:
+                    return !_pins.GetInputPin(0);
+                case LogicState.XOR:
+                    return _pins.GetInputPin(0) != _pins.GetInputPin(1);
+                case LogicState.NAND:
+                    return !(_pins.GetInputPin(0) && _pins.GetInputPin(1));
+                case LogicState.NOR:
+                    return !(_pins.GetInputPin(0) || _pins.GetInputPin(1));
             }
 
             return false;

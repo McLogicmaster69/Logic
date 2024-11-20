@@ -30,7 +30,7 @@ public class Switch : LogicComponent
 
     private void ToggleSwitch()
     {
-        Output = !Output;
-        _renderer.sprite = Output ? _onSprite : _offSprite;
+        Output[0] = !Output[0];
+        _renderer.sprite = Output[0] ? _onSprite : _offSprite;
     }
 }
