@@ -4,6 +4,13 @@ namespace Logic.Nodes
 {
     public class LogicComponent : MonoBehaviour
     {
-        public bool Output { get; protected set; }
+        [SerializeField] private int _outputs;
+
+        public bool[] Output { get; protected set; }
+
+        private void Awake()
+        {
+            Output = new bool[_outputs];
+        }
     }
 }

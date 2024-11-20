@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 0
   _gate: {fileID: 446586762043062312}
+  _outputID: 0
 --- !u!1 &1352028241001373014
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 1
   _gate: {fileID: 446586762043062312}
+  _outputID: 0
 --- !u!1 &3726678272517138229
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec50a43cc63ab3140b2f6f1ff904f2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _outputs: 1
   _state: 1
 --- !u!114 &8451805313884196949
 MonoBehaviour:
@@ -501,3 +504,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 0
   _gate: {fileID: 446586762043062312}
+  _outputID: 0
