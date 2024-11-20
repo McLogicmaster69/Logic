@@ -7,9 +7,10 @@ Made in Unity 6000.0.18f1
 Gates (functionality and sprites):
 - [x] AND
 - [x] OR
-- [ ] NOT
-- [ ] XOR
-- [ ] NAND
+- [x] NOT
+- [x] XOR
+- [x] NAND
+- [x] NOR
 
 Features:
 - [x] Switches
@@ -18,6 +19,9 @@ Features:
 - [ ] Labels
 - [x] Connecting gates with wires
 - [ ] Selecting wires to then delete
+- [ ] Selecting gates to then delete
+- [ ] Multiselect
+- [ ] Copy and paste
 - [ ] Menus
 - [x] Adding gates from menus
 - [ ] Background
