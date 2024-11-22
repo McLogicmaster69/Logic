@@ -32,6 +32,8 @@ namespace Logic.Cables
         /// </summary>
         private CableRenderer _renderer;
 
+        private bool _selected;
+
         /// <summary>
         /// Called when the cable is deleted
         /// </summary>
@@ -46,11 +48,39 @@ namespace Logic.Cables
         {
             if(_input != null)
                 _renderer.SetCableActive(Output);
+
+            if (Input.GetMouseButtonDown(0))
+                _selected = false;
+
+
+            if (Input.GetKeyDown(KeyCode.Delete) && _selected)
+                DeleteCable();
         }
 
+        /// <summary>
+        /// Assigns the cable to an input pin
+        /// </summary>
+        /// <param name="pin"></param>
         public void SetInputPin(Pin pin)
         {
             _input = pin;
+        }
+
+        /// <summary>
+        /// Deletes the cable
+        /// </summary>
+        public void DeleteCable()
+        {
+            OnCableDeleted?.Invoke();
+            Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Marks the cable as selected
+        /// </summary>
+        public void SelectCable()
+        {
+            _selected = true;
         }
     }
 }

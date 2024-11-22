@@ -18,15 +18,9 @@ namespace Logic.Nodes
     {
         [SerializeField] private LogicState _state;
 
-        private PinManager _pins;
-
-        private void Start()
+        protected override void Tick()
         {
-            _pins = GetComponent<PinManager>();
-        }
-
-        private void Update()
-        {
+            base.Tick();
             Output[0] = GetOutput();
         }
 

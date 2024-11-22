@@ -57,5 +57,13 @@ namespace Logic.Nodes
             _cable.OnCableDeleted -= DisconnectCable;
             _cable = null;
         }
+
+        /// <summary>
+        /// Deletes the gate
+        /// </summary>
+        public void DeleteGate()
+        {
+            _cable?.DeleteCable();
+        }
     }
 }
