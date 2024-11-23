@@ -18,8 +18,9 @@ Features:
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
 - [x] Connecting gates with wires
-- [ ] Selecting wires to then delete
-- [ ] Selecting gates to then delete
+- [x] Selecting wires to then delete
+- [x] Selecting gates to then delete
+- [ ] Highlight selected gates
 - [ ] Multiselect
 - [ ] Copy and paste
 - [ ] Menus
@@ -27,3 +28,4 @@ Features:
 - [ ] Background
 - [ ] Save / Load
 - [ ] Sub circuits (user can create a gate that has n inputs and m outputs, and they can edit the functionality of this gate by adding gates within it)
+- [ ] HDL to chip convertor
