@@ -37,7 +37,7 @@ namespace Logic.Cables
         /// <summary>
         /// Called when the cable is deleted
         /// </summary>
-        public event Action OnCableDeleted;
+        public event Action<CableFlow> OnCableDeleted;
 
         private void Start()
         {
@@ -71,7 +71,7 @@ namespace Logic.Cables
         /// </summary>
         public void DeleteCable()
         {
-            OnCableDeleted?.Invoke();
+            OnCableDeleted?.Invoke(this);
             Destroy(gameObject);
         }
 
