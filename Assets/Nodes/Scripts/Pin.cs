@@ -1,4 +1,5 @@
 using Logic.Cables;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Logic.Nodes
@@ -17,7 +18,7 @@ namespace Logic.Nodes
 
         public bool Output => _gate.Output[_outputID];
 
-        private CableFlow _cable;
+        private List<CableFlow> _cables = new List<CableFlow>();
 
         /// <summary>
         /// Gets the output of the connected cable
@@ -25,26 +26,26 @@ namespace Logic.Nodes
         /// </summary>
         public bool GetOutput()
         {
-            if (_cable == null)
+            if (_cables.Count == 0)
                 return false;
-            return _cable.Output;
+            return _cables[0].Output;
         }
 
         /// <summary>
         /// Outputs if a cable can be connected to this pin
         /// </summary>
         /// <returns></returns>
-        public bool CanConnectCable() => _cable == null || _pinMode == IO.Output;
+        public bool CanConnectCable() => _cables.Count == 0 || _pinMode == IO.Output;
 
         /// <summary>
         /// Connects a cable to a pin
         /// </summary>
         public bool ConnectCable(CableFlow cable)
         {
-            if (_cable != null && _pinMode == IO.Input)
+            if (_cables.Count != 0 && _pinMode == IO.Input)
                 return false;
 
-            _cable = cable;
+            _cables.Add(cable);
             cable.OnCableDeleted += DisconnectCable;
             return true;
         }
@@ -52,10 +53,21 @@ namespace Logic.Nodes
         /// <summary>
         /// Disconnects a cable from a pin
         /// </summary>
-        private void DisconnectCable()
+        private void DisconnectCable(CableFlow cable)
         {
-            _cable.OnCableDeleted -= DisconnectCable;
-            _cable = null;
+            cable.OnCableDeleted -= DisconnectCable;
+            _cables.Remove(cable);
+        }
+
+        /// <summary>
+        /// Deletes the gate
+        /// </summary>
+        public void DeleteGate()
+        {
+            while(_cables.Count > 0)
+            {
+                _cables[0].DeleteCable();
+            }
         }
     }
 }

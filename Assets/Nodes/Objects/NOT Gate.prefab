@@ -395,3 +395,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputPins:
   - {fileID: 6314866052326925528}
+  _outputPins:
+  - {fileID: 9202758096775471461}

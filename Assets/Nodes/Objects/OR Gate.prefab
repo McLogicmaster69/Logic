@@ -397,6 +397,8 @@ MonoBehaviour:
   _inputPins:
   - {fileID: 6314866052326925528}
   - {fileID: 1566467608016110692}
+  _outputPins:
+  - {fileID: 9202758096775471461}
 --- !u!1 &4135498021682803828
 GameObject:
   m_ObjectHideFlags: 0

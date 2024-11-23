@@ -6,6 +6,7 @@ namespace Logic.Nodes
     public class PinManager : MonoBehaviour
     {
         [SerializeField] private Pin[] _inputPins;
+        [SerializeField] private Pin[] _outputPins;
 
         /// <summary>
         /// Gets the output of a pin at an index
@@ -31,6 +32,22 @@ namespace Logic.Nodes
                 output[i] = GetInputPin(i);
             }
             return output;
+        }
+
+        /// <summary>
+        /// Deletes the logic gate
+        /// </summary>
+        public void DeleteGate()
+        {
+            foreach(Pin pin in _inputPins)
+            {
+                pin.DeleteGate();
+            }
+
+            foreach(Pin pin in _outputPins)
+            {
+                pin.DeleteGate();
+            }
         }
     }
 }

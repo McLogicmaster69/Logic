@@ -14,7 +14,6 @@ namespace Logic.Cables
         private GameObject _startingNode;
         private GameObject _tempCable;
         private bool _isInput;
-        private bool _unselectNextFrame = false;
 
         private void Awake()
         {

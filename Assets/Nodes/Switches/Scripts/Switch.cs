@@ -7,7 +7,6 @@ public class Switch : LogicComponent
     [SerializeField] private Sprite _onSprite;
     [SerializeField] private Sprite _offSprite;
 
-    private Vector3 _startPosition;
     private SpriteRenderer _renderer;
 
     private void Start()
@@ -15,22 +14,10 @@ public class Switch : LogicComponent
         _renderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnMouseDown()
-    {
-        _startPosition = transform.position;
-    }
-
-    private void OnMouseUpAsButton()
-    {
-        if (_startPosition == transform.position)
-        {
-            ToggleSwitch();
-        }
-    }
-
-    private void ToggleSwitch()
+    protected override void Clicked()
     {
         Output[0] = !Output[0];
         _renderer.sprite = Output[0] ? _onSprite : _offSprite;
+        base.Clicked();
     }
 }
