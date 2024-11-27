@@ -18,6 +18,11 @@ namespace Logic.Cables
         public bool Output => _input.Output;
 
         /// <summary>
+        /// If the cable is selected or not
+        /// </summary>
+        public bool Selected { get; private set; } = false;
+
+        /// <summary>
         /// The pin of the gate that is outputting to the cable
         /// </summary>
         private int _inputPin;
@@ -31,8 +36,6 @@ namespace Logic.Cables
         /// The renderer of the cable
         /// </summary>
         private CableRenderer _renderer;
-
-        private bool _selected;
 
         /// <summary>
         /// Called when the cable is deleted
@@ -50,10 +53,10 @@ namespace Logic.Cables
                 _renderer.SetCableActive(Output);
 
             if (Input.GetMouseButtonDown(0))
-                _selected = false;
+                Selected = false;
 
 
-            if (Input.GetKeyDown(KeyCode.Delete) && _selected)
+            if (Input.GetKeyDown(KeyCode.Delete) && Selected)
                 DeleteCable();
         }
 
@@ -80,7 +83,7 @@ namespace Logic.Cables
         /// </summary>
         public void SelectCable()
         {
-            _selected = true;
+            Selected = true;
         }
     }
 }

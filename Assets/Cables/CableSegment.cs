@@ -10,5 +10,11 @@ namespace Logic.Cables
         {
             _cable.SelectCable();
         }
+
+        protected override void Tick()
+        {
+            if (Input.GetMouseButtonDown(0))
+                Deselect();
+        }
     }
 }

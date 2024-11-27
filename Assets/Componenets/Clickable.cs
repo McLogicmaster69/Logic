@@ -4,6 +4,8 @@ namespace Logic
 {
     public class Clickable : MonoBehaviour
     {
+        [SerializeField] protected GameObject _highlightSprite;
+
         protected bool Selected { get; private set; }
 
         private Vector3 _startPosition;
@@ -40,7 +42,13 @@ namespace Logic
         protected virtual void Tick()
         {
             if (Input.GetMouseButtonDown(0))
-                Selected = false;
+                Deselect();
+            _highlightSprite.SetActive(Selected);
         }
+
+        /// <summary>
+        /// Sets the Selected value to false
+        /// </summary>
+        protected void Deselect() => Selected = false;
     }
 }
