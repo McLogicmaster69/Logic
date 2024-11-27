@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec50a43cc63ab3140b2f6f1ff904f2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlightSprite: {fileID: 0}
+  _highlightSprite: {fileID: 2094743013449537732}
   _outputs: 1
   _state: 4
 --- !u!114 &6095074144859160945
