@@ -43,6 +43,7 @@ UI:
 - [x] Gate creation menu
 - [ ] Gate creation menu when hitting space or some keybind (like blender)
 - [ ] Background
+- [ ] Save / Load UI
 
 Misc:
 - [ ] Save / Load
