@@ -2,26 +2,29 @@ using Logic.Nodes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Switch : LogicComponent
+namespace Logic.Nodes
 {
-    [SerializeField] private Sprite _onSprite;
-    [SerializeField] private Sprite _offSprite;
-    [SerializeField] private Sprite _onHighlight;
-    [SerializeField] private Sprite _offHighlight;
-    [SerializeField] private SpriteRenderer _highlightRenderer;
-
-    private SpriteRenderer _renderer;
-
-    private void Start()
+    public class Switch : LogicComponent
     {
-        _renderer = GetComponent<SpriteRenderer>();
-    }
+        [SerializeField] private Sprite _onSprite;
+        [SerializeField] private Sprite _offSprite;
+        [SerializeField] private Sprite _onHighlight;
+        [SerializeField] private Sprite _offHighlight;
+        [SerializeField] private SpriteRenderer _highlightRenderer;
 
-    protected override void Clicked()
-    {
-        Output[0] = !Output[0];
-        _renderer.sprite = Output[0] ? _onSprite : _offSprite;
-        _highlightRenderer.sprite = Output[0] ? _onHighlight : _offHighlight;
-        base.Clicked();
+        private SpriteRenderer _renderer;
+
+        private void Start()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+        }
+
+        protected override void Clicked()
+        {
+            Output[0] = !Output[0];
+            _renderer.sprite = Output[0] ? _onSprite : _offSprite;
+            _highlightRenderer.sprite = Output[0] ? _onHighlight : _offHighlight;
+            base.Clicked();
+        }
     }
 }
