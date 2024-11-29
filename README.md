@@ -28,7 +28,7 @@ Gate and cable functions:
 - [x] Highlight selected gates
 - [ ] Multiselect
 - [ ] Copy and paste
-- [ ] Simmply cable layout coming from the same pin
+- [ ] Simplify cable layout coming from the same pin
 
 Chips:
 - [ ] Chip creator
