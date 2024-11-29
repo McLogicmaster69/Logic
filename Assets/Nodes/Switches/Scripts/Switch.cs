@@ -1,6 +1,4 @@
-using Logic.Nodes;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Logic.Nodes
 {
