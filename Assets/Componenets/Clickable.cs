@@ -18,9 +18,9 @@ namespace Logic
         private void OnMouseUpAsButton()
         {
             if (_startPosition == transform.position)
-            {
-                Clicked();
-            }
+                ClickedNoDrag();
+            else
+                ClickedAndDrag();
         }
 
         private void OnMouseDown()
@@ -31,7 +31,12 @@ namespace Logic
         /// <summary>
         /// Called when the component has been clicked
         /// </summary>
-        protected virtual void Clicked()
+        protected virtual void ClickedAndDrag()
+        {
+            Selected = true;
+        }
+
+        protected virtual void ClickedNoDrag()
         {
             Selected = true;
         }
