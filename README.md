@@ -16,7 +16,7 @@ Other components:
 - [x] Switch
 - [ ] 1/0 Switch
 - [ ] Button
-- [ ] Clock
+- [x] Clock
 - [x] Bulb
 - [ ] 1/0 Output
 - [ ] Constant 1 and 0
