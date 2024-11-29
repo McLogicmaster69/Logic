@@ -19,7 +19,7 @@ Other components:
 - [x] Clock
 - [x] Bulb
 - [ ] 1/0 Output
-- [ ] Constant 1 and 0
+- [x] Constant 1 and 0
 
 Gate and cable functions:
 - [x] Connecting gates with wires
