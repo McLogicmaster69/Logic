@@ -14,11 +14,11 @@ Gates (functionality and sprites):
 
 Other components:
 - [x] Switch
-- [ ] 1/0 Switch
+- [x] 1/0 Switch
 - [ ] Button
 - [x] Clock
 - [x] Bulb
-- [ ] 1/0 Output
+- [x] 1/0 Output
 - [x] Constant 1 and 0
 
 Gate and cable functions:
