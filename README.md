@@ -15,7 +15,7 @@ Gates (functionality and sprites):
 Other components:
 - [x] Switch
 - [x] 1/0 Switch
-- [ ] Button
+- [x] Button
 - [x] Clock
 - [x] Bulb
 - [x] 1/0 Output
