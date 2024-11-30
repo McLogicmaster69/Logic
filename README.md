@@ -51,3 +51,26 @@ Misc:
 - [ ] Save / Load
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
+
+### Release plans:
+V0.1:
+- Gate creation
+- Gate deletion
+- Cable creation
+- Cable deletion
+- Input components
+- Output components
+
+V0.2:
+- Additional selection tools
+- Save / Load
+- Save / Load UI
+
+V0.3:
+- Chips
+
+V0.4:
+- Additional UI
+- Labels
+- Simplify cables
+- Optimize
