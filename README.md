@@ -31,6 +31,7 @@ Gate and cable functions:
 - [ ] Simplify cable layout coming from the same pin
 
 Chips:
+- [ ] Built-in DFF Chip
 - [ ] Chip creator
 - [ ] View and edit created chips
 - [ ] Delete chips
