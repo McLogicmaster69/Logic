@@ -6,7 +6,7 @@ namespace Logic.Cables
     {
         [SerializeField] private CableFlow _cable;
 
-        protected override void ClickedAndDrag()
+        protected override void ClickedNoDrag()
         {
             _cable.SelectCable();
         }
