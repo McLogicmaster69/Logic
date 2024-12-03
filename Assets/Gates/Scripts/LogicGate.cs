@@ -6,17 +6,20 @@ namespace Logic.Nodes
 {
     public enum LogicState
     {
-        AND,
-        OR,
-        NOT,
-        XOR,
-        NAND,
-        NOR
+        UNKNOWN = -1,
+        AND = 0,
+        OR = 1,
+        NOT = 2,
+        XOR = 3,
+        NAND = 4,
+        NOR = 5
     }
 
     public class LogicGate : LogicComponent
     {
         [SerializeField] private LogicState _state;
+
+        public LogicState State => _state;
 
         protected override void Tick()
         {
