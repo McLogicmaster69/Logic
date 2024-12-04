@@ -1,3 +1,4 @@
+using Logic.Files.Profiles;
 using UnityEngine;
 
 namespace Logic.Files
@@ -18,6 +19,8 @@ namespace Logic.Files
             if (string.IsNullOrEmpty(_currentFilePath))
                 return FileErrors.NoSaveFilePath;
 
+            MasterSaveProfile profile = ObjectStorage._main.CreateProfile();
+            SaveSystem.Save<MasterSaveProfile>(profile, _currentFilePath);
             return FileErrors.None;
         }
     }

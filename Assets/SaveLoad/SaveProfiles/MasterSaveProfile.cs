@@ -5,5 +5,11 @@ namespace Logic.Files.Profiles
     {
         public ComponentSaveProfile[] Components;
         public CableSaveProfile[] Cables;
+
+        public MasterSaveProfile(ComponentSaveProfile[] components, CableSaveProfile[] cables)
+        {
+            Components = components;
+            Cables = cables;
+        }
     }
 }

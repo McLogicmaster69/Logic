@@ -8,14 +8,9 @@ namespace Logic.Cables
     public class CableFlow : MonoBehaviour
     {
         /// <summary>
-        /// The gate that is outputting to the cable
-        /// </summary>
-        [SerializeField] private Pin _input;
-
-        /// <summary>
         /// The state of the cable
         /// </summary>
-        public bool Output => _input.Output;
+        public bool Output => InputPin.Output;
 
         /// <summary>
         /// If the cable is selected or not
@@ -23,14 +18,24 @@ namespace Logic.Cables
         public bool Selected { get; private set; } = false;
 
         /// <summary>
+        /// The gate that is outputting to the cable
+        /// </summary>
+        public Pin InputPin { get; private set; }
+
+        /// <summary>
+        /// The gate that the cable is outputting to
+        /// </summary>
+        public Pin OutputPin { get; private set; }
+
+        /// <summary>
         /// The pin of the gate that is outputting to the cable
         /// </summary>
-        private int _inputPin;
+        private int _inputPinIndex;
 
         /// <summary>
         /// The pin of the gate that the cable is being fed into
         /// </summary>
-        private int _outputPin;
+        private int _outputPinIndex;
 
         /// <summary>
         /// The renderer of the cable
@@ -49,7 +54,7 @@ namespace Logic.Cables
 
         private void Update()
         {
-            if(_input != null)
+            if(InputPin != null)
                 _renderer.SetCableActive(Output);
 
             if (Input.GetMouseButtonDown(0))
@@ -66,7 +71,16 @@ namespace Logic.Cables
         /// <param name="pin"></param>
         public void SetInputPin(Pin pin)
         {
-            _input = pin;
+            InputPin = pin;
+        }
+
+        /// <summary>
+        /// Assugb the cable to an output pin
+        /// </summary>
+        /// <param name="pin"></param>
+        public void SetOutputPin(Pin pin)
+        {
+            OutputPin = pin;
         }
 
         /// <summary>

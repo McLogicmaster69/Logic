@@ -100,7 +100,7 @@ namespace Logic.Cables
             if (!outputPin.CanConnectCable())
                 return;
 
-            GameObject cable = Instantiate(_cableObject);
+            GameObject cable = Instantiate(_cableObject, ObjectStorage._main.transform);
             CableRenderer renderer = cable.GetComponent<CableRenderer>();
             CableFlow flow = cable.GetComponent<CableFlow>();
             if(_isInput)
@@ -111,6 +111,7 @@ namespace Logic.Cables
             inputPin.ConnectCable(flow);
             outputPin.ConnectCable(flow);
             flow.SetInputPin(inputPin);
+            flow.SetOutputPin(outputPin);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Logic.Nodes
         [SerializeField] private int _outputID;
 
         public bool Output => _gate.Output[_outputID];
+        public LogicComponent Gate => _gate;
 
         private List<CableFlow> _cables = new List<CableFlow>();
 
