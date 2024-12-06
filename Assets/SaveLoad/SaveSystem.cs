@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -19,11 +20,41 @@ namespace Logic.Files
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="file"></param>
-        public static void Save<T>(T file, string path)
+        public static FileErrorMessage Save<T>(T file, string path)
         {
-            FileStream stream = new FileStream(path, FileMode.Create);
-            _formatter.Serialize(stream, file);
-            stream.Close();
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                try
+                {
+                    _formatter.Serialize(stream, file);
+                }
+                catch (DirectoryNotFoundException e)
+                {
+                    return new FileErrorMessage(FileError.DirectoryNotFound, e.Message);
+                }
+                catch (DriveNotFoundException e)
+                {
+                    return new FileErrorMessage(FileError.DriveNotFound, e.Message);
+                }
+                catch (InternalBufferOverflowException e)
+                {
+                    return new FileErrorMessage(FileError.InternalBufferOverflow, e.Message);
+                }
+                catch (InvalidDataException e)
+                {
+                    return new FileErrorMessage(FileError.InvalidData, e.Message);
+                }
+                catch (PathTooLongException e)
+                {
+                    return new FileErrorMessage(FileError.PathTooLong, e.Message);
+                }
+                catch (Exception e)
+                {
+                    return new FileErrorMessage(FileError.Other, e.Message);
+                }
+            }
+
+            return FileErrorMessage.None;
         }
 
         /// <summary>
