@@ -53,8 +53,11 @@ namespace Logic.Menu
 
         public void SaveButton()
         {
-            SaveManager.SaveToFilePath();
+            UpdateMenuState(-1);
+            SaveManager.SaveToFilePath(UpdateStatus);
+            UpdateMenuState(0);
             HideMenu();
+            StartHidingText();
         }
 
         public void ReturnMainMenu() => UpdateMenuState(0);
