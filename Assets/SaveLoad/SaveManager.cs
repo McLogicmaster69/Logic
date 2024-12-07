@@ -14,12 +14,12 @@ namespace Logic.Files
         public const string SAVE_DIRECTORY = "saves";
         public const string FILE_EXTENSION = ".lc";
 
-        public static string GetSaveDirectory() => $"{Application.persistentDataPath}/{SAVE_DIRECTORY}";
+        public static string SaveDirectory => $"{Application.persistentDataPath}/{SAVE_DIRECTORY}";
 
         public static void CheckSaveDirectoryExists()
         {
-            if (!Directory.Exists(GetSaveDirectory()))
-                Directory.CreateDirectory(GetSaveDirectory());
+            if (!Directory.Exists(SaveDirectory))
+                Directory.CreateDirectory(SaveDirectory);
         }
 
         public static FileError SaveToFilePath(Action<TextUpdateArgs> statusUpdate = null)
@@ -38,12 +38,18 @@ namespace Logic.Files
 
             if (message.Error == FileError.None)
             {
-                RunStatusUpdate(statusUpdate, "Saved!");
+                RunStatusUpdate(statusUpdate, $"Saved! Path: {CurrentFilePath}");
                 return FileError.None;
             }
 
             RunStatusUpdate(statusUpdate, FileErrorToString(message), Color.red);
             return message.Error;
+        }
+
+        public static FileError SaveToFilePath(string fileName, Action<TextUpdateArgs> statusUpdate = null)
+        {
+            CurrentFilePath = $"{SaveDirectory}/{fileName}{FILE_EXTENSION}";
+            return SaveToFilePath(statusUpdate);
         }
 
         private static void RunStatusUpdate(Action<TextUpdateArgs> statusUpdate, string text)
