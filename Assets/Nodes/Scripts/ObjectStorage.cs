@@ -4,17 +4,26 @@ using Logic.Menu;
 using Logic.Nodes;
 using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Logic
 {
     public class ObjectStorage : MonoBehaviour
     {
-        public static ObjectStorage _main { get; private set; }
+        public static ObjectStorage Main { get; private set; }
+
+        [SerializeField] private GameObject _ANDGate;
+        [SerializeField] private GameObject _ORGate;
+        [SerializeField] private GameObject _NOTGate;
+        [SerializeField] private GameObject _XORGate;
+        [SerializeField] private GameObject _NANDGate;
+        [SerializeField] private GameObject _NORGate;
+        [SerializeField] private GameObject _cable;
 
         private void Awake()
         {
-            _main = this;
+            Main = this;
         }
 
         public LogicGate[] GetLogicGates() => GetComponentsInChildren<LogicGate>();
@@ -48,15 +57,79 @@ namespace Logic
                         inputIndex = j;
                     if (gates[j] == cable.OutputPin.Gate)
                         outputIndex = j;
-                    if (inputIndex != -1 || outputIndex != -1)
+                    if (inputIndex != -1 && outputIndex != -1)
                         break;
                 }
 
-                cableProfiles[i] = new CableSaveProfile(inputIndex, outputIndex);
+                cableProfiles[i] = new CableSaveProfile(inputIndex, cable.InputPin.ID, outputIndex, cable.OutputPin.ID);
             }
 
             RunStatusUpdate(statusUpdate, "Saving (Creating master profile)");
-            return new MasterSaveProfile(componentProfiles, cableProfiles);
+            return new MasterSaveProfile(ProjectInfo.CURRENT_VERSION, componentProfiles, cableProfiles);
+        }
+
+        public void LoadMasterSaveProfile(MasterSaveProfile profile)
+        {
+            DestroyAllChildren();
+            List<GameObject> components = BuildComponents(profile);
+            BuildCables(profile, components);
+        }
+
+        private List<GameObject> BuildComponents(MasterSaveProfile profile)
+        {
+            List<GameObject> components = new List<GameObject>();
+            foreach(ComponentSaveProfile comp in profile.Components)
+            {
+                GameObject o = Instantiate(GetGateObject(comp.GateType), new Vector3(comp.X, comp.Y, 0f), Quaternion.identity, transform);
+                components.Add(o);
+            }
+            return components;
+        }
+
+        private void BuildCables(MasterSaveProfile profile, List<GameObject> components)
+        {
+            foreach(CableSaveProfile cable in profile.Cables)
+            {
+                BuildCable(cable, components[cable.InputIndex], components[cable.OutputIndex]);
+            }
+        }
+
+        private void BuildCable(CableSaveProfile profile, GameObject inputNode, GameObject outputNode)
+        {
+            Pin inputPin = inputNode.GetComponent<LogicGate>().Pins.GetOutputPinObject(profile.InputPin);
+            Pin outputPin = outputNode.GetComponent<LogicGate>().Pins.GetInputPinObject(profile.OutputPin);
+
+            GameObject cable = Instantiate(_cable, transform);
+            CableRenderer renderer = cable.GetComponent<CableRenderer>();
+            CableFlow flow = cable.GetComponent<CableFlow>();
+            renderer.SetNodes(inputPin.gameObject, outputPin.gameObject);
+
+            inputPin.ConnectCable(flow);
+            outputPin.ConnectCable(flow);
+            flow.SetInputPin(inputPin);
+            flow.SetOutputPin(outputPin);
+        }
+
+        private GameObject GetGateObject(int gateType)
+        {
+            return gateType switch
+            {
+                0 => _ANDGate,
+                1 => _ORGate,
+                2 => _NOTGate,
+                3 => _XORGate,
+                4 => _NANDGate,
+                5 => _NORGate,
+                _ => null
+            };
+        }
+
+        private void DestroyAllChildren()
+        {
+            while(transform.childCount > 0)
+            {
+                Destroy(transform.GetChild(0));
+            }
         }
 
         private void RunStatusUpdate(Action<TextUpdateArgs> statusUpdate, string text)

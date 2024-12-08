@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Logic.Files
 {
@@ -35,6 +36,10 @@ namespace Logic.Files
             {
                 return new FileErrorMessage(FileError.DriveNotFound, e.Message);
             }
+            catch (EndOfStreamException e)
+            {
+                return new FileErrorMessage(FileError.EndOfStream, e.Message);
+            }
             catch (InternalBufferOverflowException e)
             {
                 return new FileErrorMessage(FileError.InternalBufferOverflow, e.Message);
@@ -62,12 +67,44 @@ namespace Logic.Files
         /// <param name="file"></param>
         /// <param name="fileName"></param>
         /// <param name="fileExtension"></param>
-        public static void Save<T>(T file, string fileName, string fileExtension)
+        public static FileErrorMessage Save<T>(T file, string fileName, string fileExtension)
         {
-            string path = Application.persistentDataPath + $"/{fileName}.{fileExtension}";
-            FileStream stream = new FileStream(path, FileMode.Create);
-            _formatter.Serialize(stream, file);
-            stream.Close();
+            try
+            {
+                string path = Application.persistentDataPath + $"/{fileName}.{fileExtension}";
+                using FileStream stream = new FileStream(path, FileMode.Create);
+                _formatter.Serialize(stream, file);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DirectoryNotFound, e.Message);
+            }
+            catch (DriveNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DriveNotFound, e.Message);
+            }
+            catch (EndOfStreamException e)
+            {
+                return new FileErrorMessage(FileError.EndOfStream, e.Message);
+            }
+            catch (InternalBufferOverflowException e)
+            {
+                return new FileErrorMessage(FileError.InternalBufferOverflow, e.Message);
+            }
+            catch (InvalidDataException e)
+            {
+                return new FileErrorMessage(FileError.InvalidData, e.Message);
+            }
+            catch (PathTooLongException e)
+            {
+                return new FileErrorMessage(FileError.PathTooLong, e.Message);
+            }
+            catch (Exception e)
+            {
+                return new FileErrorMessage(FileError.Other, e.Message);
+            }
+
+            return FileErrorMessage.None;
         }
 
         /// <summary>
@@ -75,19 +112,57 @@ namespace Logic.Files
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T Load<T>(string path)
+        public static FileErrorMessage Load<T>(string path, out T file)
         {
-            if (File.Exists(path))
+            file = default(T);
+            if (!File.Exists(path))
             {
-                FileStream stream = new FileStream(path, FileMode.Open);
-                T file = (T)_formatter.Deserialize(stream);
-                stream.Close();
-                return file;
+                return new FileErrorMessage(FileError.FileNotFound, "There is no file at the path passed in");
             }
-            else
+
+            try
             {
-                return default(T);
+                using FileStream stream = new FileStream(path, FileMode.Open);
+                file = (T)_formatter.Deserialize(stream);
             }
+            catch (DirectoryNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DirectoryNotFound, e.Message);
+            }
+            catch (DriveNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DriveNotFound, e.Message);
+            }
+            catch (EndOfStreamException e)
+            {
+                return new FileErrorMessage(FileError.EndOfStream, e.Message);
+            }
+            catch (FileLoadException e)
+            {
+                return new FileErrorMessage(FileError.FileLoad, e.Message);
+            }
+            catch (FileNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.FileNotFound, e.Message);
+            }
+            catch (InternalBufferOverflowException e)
+            {
+                return new FileErrorMessage(FileError.InternalBufferOverflow, e.Message);
+            }
+            catch (InvalidDataException e)
+            {
+                return new FileErrorMessage(FileError.InvalidData, e.Message);
+            }
+            catch (PathTooLongException e)
+            {
+                return new FileErrorMessage(FileError.PathTooLong, e.Message);
+            }
+            catch (Exception e)
+            {
+                return new FileErrorMessage(FileError.Other, e.Message);
+            }
+
+            return FileErrorMessage.None;
         }
 
         /// <summary>
@@ -97,20 +172,58 @@ namespace Logic.Files
         /// <param name="fileName"></param>
         /// <param name="fileExtension"></param>
         /// <returns></returns>
-        public static T Load<T>(string fileName, string fileExtension)
+        public static FileErrorMessage Load<T>(string fileName, string fileExtension, out T file)
         {
+            file = default(T);
             string path = Application.persistentDataPath + $"/{fileName}.{fileExtension}";
-            if (File.Exists(path))
+            if (!File.Exists(path))
             {
-                FileStream stream = new FileStream(path, FileMode.Open);
-                T file = (T)_formatter.Deserialize(stream);
-                stream.Close();
-                return file;
+                return new FileErrorMessage(FileError.FileNotFound, "There is no file at the path passed in");
             }
-            else
+
+            try
             {
-                return default(T);
+                using FileStream stream = new FileStream(path, FileMode.Open);
+                file = (T)_formatter.Deserialize(stream);
             }
+            catch (DirectoryNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DirectoryNotFound, e.Message);
+            }
+            catch (DriveNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.DriveNotFound, e.Message);
+            }
+            catch (EndOfStreamException e)
+            {
+                return new FileErrorMessage(FileError.EndOfStream, e.Message);
+            }
+            catch (FileLoadException e)
+            {
+                return new FileErrorMessage(FileError.FileLoad, e.Message);
+            }
+            catch (FileNotFoundException e)
+            {
+                return new FileErrorMessage(FileError.FileNotFound, e.Message);
+            }
+            catch (InternalBufferOverflowException e)
+            {
+                return new FileErrorMessage(FileError.InternalBufferOverflow, e.Message);
+            }
+            catch (InvalidDataException e)
+            {
+                return new FileErrorMessage(FileError.InvalidData, e.Message);
+            }
+            catch (PathTooLongException e)
+            {
+                return new FileErrorMessage(FileError.PathTooLong, e.Message);
+            }
+            catch (Exception e)
+            {
+                return new FileErrorMessage(FileError.Other, e.Message);
+            }
+
+            return FileErrorMessage.None;
         }
 
         /// <summary>

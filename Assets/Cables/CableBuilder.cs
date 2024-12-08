@@ -75,7 +75,6 @@ namespace Logic.Cables
         /// Ends the builder with an ending node
         /// </summary>
         /// <param name="node"></param>
-        /// <param name="isInput"></param>
         private void EndBuilder(GameObject node)
         {
             if (_startingNode == null)
@@ -100,7 +99,7 @@ namespace Logic.Cables
             if (!outputPin.CanConnectCable())
                 return;
 
-            GameObject cable = Instantiate(_cableObject, ObjectStorage._main.transform);
+            GameObject cable = Instantiate(_cableObject, ObjectStorage.Main.transform);
             CableRenderer renderer = cable.GetComponent<CableRenderer>();
             CableFlow flow = cable.GetComponent<CableFlow>();
             if(_isInput)

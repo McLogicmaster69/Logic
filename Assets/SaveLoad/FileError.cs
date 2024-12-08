@@ -3,13 +3,15 @@
     public enum FileError
     {
         None,
-        NoSaveFilePath,
+
         DirectoryNotFound,
         DriveNotFound,
         EndOfStream,
         FileLoad,
+        FileNotFound,
         InternalBufferOverflow,
         InvalidData,
+        NoSaveFilePath,
         PathTooLong,
         Other
     }

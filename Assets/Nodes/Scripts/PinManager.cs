@@ -20,6 +20,13 @@ namespace Logic.Nodes
         }
 
         /// <summary>
+        /// Gets an input pin at an index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Pin GetInputPinObject(int index) => _inputPins[index];
+
+        /// <summary>
         /// Gets an array of pin outputs
         /// </summary>
         /// <param name="pins"></param>
@@ -33,6 +40,13 @@ namespace Logic.Nodes
             }
             return output;
         }
+
+        /// <summary>
+        /// Gets an output pin at an index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Pin GetOutputPinObject(int index) => _outputPins[index];
 
         /// <summary>
         /// Deletes the logic gate

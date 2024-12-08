@@ -9,12 +9,12 @@ namespace Logic.Nodes
 
         public bool[] Output { get; protected set; }
 
-        protected PinManager _pins;
+        public PinManager Pins { get; protected set; }
 
         private void Awake()
         {
             Output = new bool[_outputs];
-            _pins = GetComponent<PinManager>();
+            Pins = GetComponent<PinManager>();
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Logic.Nodes
         /// </summary>
         public void DeleteGate()
         {
-            _pins.DeleteGate();
+            Pins.DeleteGate();
             Destroy(gameObject);
         }
 

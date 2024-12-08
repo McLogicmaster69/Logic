@@ -35,17 +35,17 @@ namespace Logic.Nodes
             switch (_state)
             {
                 case LogicState.AND:
-                    return _pins.GetInputPin(0) && _pins.GetInputPin(1);
+                    return Pins.GetInputPin(0) && Pins.GetInputPin(1);
                 case LogicState.OR:
-                    return _pins.GetInputPin(0) || _pins.GetInputPin(1);
+                    return Pins.GetInputPin(0) || Pins.GetInputPin(1);
                 case LogicState.NOT:
-                    return !_pins.GetInputPin(0);
+                    return !Pins.GetInputPin(0);
                 case LogicState.XOR:
-                    return _pins.GetInputPin(0) != _pins.GetInputPin(1);
+                    return Pins.GetInputPin(0) != Pins.GetInputPin(1);
                 case LogicState.NAND:
-                    return !(_pins.GetInputPin(0) && _pins.GetInputPin(1));
+                    return !(Pins.GetInputPin(0) && Pins.GetInputPin(1));
                 case LogicState.NOR:
-                    return !(_pins.GetInputPin(0) || _pins.GetInputPin(1));
+                    return !(Pins.GetInputPin(0) || Pins.GetInputPin(1));
             }
 
             return false;

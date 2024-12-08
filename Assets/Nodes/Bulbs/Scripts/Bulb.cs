@@ -17,7 +17,7 @@ namespace Logic.Nodes
         protected override void Tick()
         {
             base.Tick();
-            _renderer.sprite = _pins.GetInputPin(0) ? _onSprite : _offSprite;
+            _renderer.sprite = Pins.GetInputPin(0) ? _onSprite : _offSprite;
         }
     }
 }

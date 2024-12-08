@@ -30,12 +30,12 @@ namespace Logic.Cables
         /// <summary>
         /// The pin of the gate that is outputting to the cable
         /// </summary>
-        private int _inputPinIndex;
+        public int InputPinIndex { get; private set; }
 
         /// <summary>
         /// The pin of the gate that the cable is being fed into
         /// </summary>
-        private int _outputPinIndex;
+        public int OutputPinIndex { get; private set; }
 
         /// <summary>
         /// The renderer of the cable
