@@ -9,11 +9,11 @@ namespace Logic.Files.Profiles
         public float Y;
         public int GateType;
 
-        public ComponentSaveProfile(LogicGate gate)
+        public ComponentSaveProfile(LogicComponent gate)
         {
             X = gate.transform.position.x;
             Y = gate.transform.position.y;
-            GateType = (int)gate.State;
+            GateType = (int)gate.Type;
         }
     }
 }

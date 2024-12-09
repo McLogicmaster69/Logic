@@ -5,7 +5,10 @@ namespace Logic.Nodes
     [RequireComponent(typeof(PinManager))]
     public class LogicComponent : Clickable
     {
+        [SerializeField] private ComponentType _type;
         [SerializeField] private int _outputs;
+
+        public ComponentType Type => _type;
 
         public bool[] Output { get; protected set; }
 

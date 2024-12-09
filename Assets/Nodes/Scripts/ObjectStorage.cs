@@ -19,6 +19,14 @@ namespace Logic
         [SerializeField] private GameObject _XORGate;
         [SerializeField] private GameObject _NANDGate;
         [SerializeField] private GameObject _NORGate;
+        [SerializeField] private GameObject _switch;
+        [SerializeField] private GameObject _bulb;
+        [SerializeField] private GameObject _clock;
+        [SerializeField] private GameObject _button;
+        [SerializeField] private GameObject _constantOne;
+        [SerializeField] private GameObject _constantZero;
+        [SerializeField] private GameObject _ZOOutput;
+        [SerializeField] private GameObject _ZOInput;
         [SerializeField] private GameObject _cable;
 
         private void Awake()
@@ -26,13 +34,13 @@ namespace Logic
             Main = this;
         }
 
-        public LogicGate[] GetLogicGates() => GetComponentsInChildren<LogicGate>();
+        public LogicComponent[] GetLogicGates() => GetComponentsInChildren<LogicComponent>();
 
         public CableFlow[] GetCableFlows() => GetComponentsInChildren<CableFlow>();
 
         public MasterSaveProfile CreateProfile(Action<TextUpdateArgs> statusUpdate = null)
         {
-            LogicGate[] gates = GetLogicGates();
+            LogicComponent[] gates = GetLogicGates();
             CableFlow[] cables = GetCableFlows();
 
             ComponentSaveProfile[] componentProfiles = new ComponentSaveProfile[gates.Length];
@@ -120,15 +128,23 @@ namespace Logic
                 3 => _XORGate,
                 4 => _NANDGate,
                 5 => _NORGate,
+                6 => _switch,
+                7 => _bulb,
+                8 => _clock,
+                9 => _button,
+                10 => _constantOne,
+                11 => _constantZero,
+                12 => _ZOOutput,
+                13 => _ZOInput,
                 _ => null
             };
         }
 
         private void DestroyAllChildren()
         {
-            while(transform.childCount > 0)
+            foreach(Transform child in transform)
             {
-                Destroy(transform.GetChild(0));
+                GameObject.Destroy(child.gameObject);
             }
         }
 

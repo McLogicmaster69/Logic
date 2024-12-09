@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightSprite: {fileID: 9172854047673455362}
+  _type: 9
   _outputs: 1
   _onSprite: {fileID: 21300000, guid: ae228f5f12a035d4e91c6f72271d92e7, type: 3}
   _offSprite: {fileID: 21300000, guid: b07e4b8521a45324abd79527112e31b0, type: 3}
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 1
   _gate: {fileID: 158444185439460846}
-  _outputID: 0
+  _pinID: 0
 --- !u!1 &9172854047673455362
 GameObject:
   m_ObjectHideFlags: 0
