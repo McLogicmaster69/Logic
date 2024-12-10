@@ -25,8 +25,8 @@ namespace Logic
         [SerializeField] private GameObject _button;
         [SerializeField] private GameObject _constantOne;
         [SerializeField] private GameObject _constantZero;
-        [SerializeField] private GameObject _ZOOutput;
         [SerializeField] private GameObject _ZOInput;
+        [SerializeField] private GameObject _ZOOutput;
         [SerializeField] private GameObject _cable;
 
         private void Awake()
@@ -104,8 +104,8 @@ namespace Logic
 
         private void BuildCable(CableSaveProfile profile, GameObject inputNode, GameObject outputNode)
         {
-            Pin inputPin = inputNode.GetComponent<LogicGate>().Pins.GetOutputPinObject(profile.InputPin);
-            Pin outputPin = outputNode.GetComponent<LogicGate>().Pins.GetInputPinObject(profile.OutputPin);
+            Pin inputPin = inputNode.GetComponent<LogicComponent>().Pins.GetOutputPinObject(profile.InputPin);
+            Pin outputPin = outputNode.GetComponent<LogicComponent>().Pins.GetInputPinObject(profile.OutputPin);
 
             GameObject cable = Instantiate(_cable, transform);
             CableRenderer renderer = cable.GetComponent<CableRenderer>();
@@ -134,8 +134,8 @@ namespace Logic
                 9 => _button,
                 10 => _constantOne,
                 11 => _constantZero,
-                12 => _ZOOutput,
-                13 => _ZOInput,
+                12 => _ZOInput,
+                13 => _ZOOutput,
                 _ => null
             };
         }
