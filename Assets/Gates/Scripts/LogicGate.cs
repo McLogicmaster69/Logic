@@ -4,20 +4,8 @@ using UnityEngine;
 
 namespace Logic.Nodes
 {
-    public enum LogicState
-    {
-        AND,
-        OR,
-        NOT,
-        XOR,
-        NAND,
-        NOR
-    }
-
     public class LogicGate : LogicComponent
     {
-        [SerializeField] private LogicState _state;
-
         protected override void Tick()
         {
             base.Tick();
@@ -29,20 +17,20 @@ namespace Logic.Nodes
         /// </summary>
         protected virtual bool GetOutput()
         {
-            switch (_state)
+            switch (Type)
             {
-                case LogicState.AND:
-                    return _pins.GetInputPin(0) && _pins.GetInputPin(1);
-                case LogicState.OR:
-                    return _pins.GetInputPin(0) || _pins.GetInputPin(1);
-                case LogicState.NOT:
-                    return !_pins.GetInputPin(0);
-                case LogicState.XOR:
-                    return _pins.GetInputPin(0) != _pins.GetInputPin(1);
-                case LogicState.NAND:
-                    return !(_pins.GetInputPin(0) && _pins.GetInputPin(1));
-                case LogicState.NOR:
-                    return !(_pins.GetInputPin(0) || _pins.GetInputPin(1));
+                case ComponentType.AND:
+                    return Pins.GetInputPin(0) && Pins.GetInputPin(1);
+                case ComponentType.OR:
+                    return Pins.GetInputPin(0) || Pins.GetInputPin(1);
+                case ComponentType.NOT:
+                    return !Pins.GetInputPin(0);
+                case ComponentType.XOR:
+                    return Pins.GetInputPin(0) != Pins.GetInputPin(1);
+                case ComponentType.NAND:
+                    return !(Pins.GetInputPin(0) && Pins.GetInputPin(1));
+                case ComponentType.NOR:
+                    return !(Pins.GetInputPin(0) || Pins.GetInputPin(1));
             }
 
             return false;

@@ -10,7 +10,7 @@ namespace Logic.UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            GameObject o = Instantiate(_gate, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            GameObject o = Instantiate(_gate, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity, ObjectStorage.Main.transform);
             o.GetComponent<NodeDrag>().StartTempDrag();
         }
     }

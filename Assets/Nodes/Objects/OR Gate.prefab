@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 0
   _gate: {fileID: 446586762043062312}
-  _outputID: 0
+  _pinID: 0
 --- !u!1 &1352028241001373014
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 1
   _gate: {fileID: 446586762043062312}
-  _outputID: 0
+  _pinID: 0
 --- !u!1 &3726678272517138229
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightSprite: {fileID: 144452149272288207}
+  _type: 1
   _outputs: 1
-  _state: 1
 --- !u!114 &8451805313884196949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,4 +595,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 0
   _gate: {fileID: 446586762043062312}
-  _outputID: 0
+  _pinID: 1

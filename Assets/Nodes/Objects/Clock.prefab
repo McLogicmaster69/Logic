@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 1
   _gate: {fileID: 2118798883069218714}
-  _outputID: 0
+  _pinID: 0
 --- !u!1 &3461100669854478586
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightSprite: {fileID: 3461100669854478586}
+  _type: 8
   _outputs: 1
   _clockFrames:
   - {fileID: 21300000, guid: 80a1334f0d5d3c646a44b7e79f3c0089, type: 3}

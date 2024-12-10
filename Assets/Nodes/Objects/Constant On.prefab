@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _highlightSprite: {fileID: 2419310475934926931}
+  _type: 10
   _outputs: 1
   _state: 1
 --- !u!114 &140966151887901930
@@ -374,4 +375,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pinMode: 1
   _gate: {fileID: 8075751185371317824}
-  _outputID: 0
+  _pinID: 0

@@ -14,9 +14,14 @@ namespace Logic.Nodes
     {
         [SerializeField] private IO _pinMode;
         [SerializeField] private LogicComponent _gate;
-        [SerializeField] private int _outputID;
+        [SerializeField] private int _pinID;
 
-        public bool Output => _gate.Output[_outputID];
+        public int ID => _pinID;
+
+        public bool Output => _gate.Output[_pinID];
+
+        public LogicComponent Gate => _gate;
+
 
         private List<CableFlow> _cables = new List<CableFlow>();
 
