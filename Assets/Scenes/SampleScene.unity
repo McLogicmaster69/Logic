@@ -295,8 +295,8 @@ MonoBehaviour:
   _button: {fileID: 2393848079810887119, guid: f72c200c8d27bae46b411856b16292fb, type: 3}
   _constantOne: {fileID: 3056257325831885451, guid: a817154f456b4e1438a8eaad48bb0aeb, type: 3}
   _constantZero: {fileID: 2588783791579796036, guid: 13537ab1f055e734fb4a708d07d3b7ac, type: 3}
-  _ZOOutput: {fileID: 477180565842556338, guid: 4e6fc7663ac527b489017ef0c723deca, type: 3}
   _ZOInput: {fileID: 716742529686949466, guid: 32e648eec0b694f4f9106342735a6f43, type: 3}
+  _ZOOutput: {fileID: 477180565842556338, guid: 4e6fc7663ac527b489017ef0c723deca, type: 3}
   _cable: {fileID: 693215266220454660, guid: 6d1a0147df2a9494393b2b9c493ec7f8, type: 3}
 --- !u!4 &192597588
 Transform:
@@ -4591,7 +4591,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 196665776}
         m_TargetAssemblyTypeName: Logic.Menu.EscapeMenuNavigator, Assembly-CSharp
-        m_MethodName: QuitButton
+        m_MethodName: ConfirmQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
