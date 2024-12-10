@@ -41,15 +41,15 @@ Chips:
 - [ ] HDL to chip convertor
 
 UI:
-- [ ] Main menu
+- [x] Main menu
 - [x] Gate creation menu
 - [ ] Gate creation menu when hitting space or some keybind (like blender)
 - [ ] Selected component information window
 - [ ] Background
-- [ ] Save / Load UI
+- [x] Save / Load UI
 
 Misc:
-- [ ] Save / Load
+- [x] Save / Load
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
 
