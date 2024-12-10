@@ -132,7 +132,6 @@ namespace Logic.Menu
             _buttonObjects.SetActive(state == 0);
             _saveAsMenu.SetActive(state == 1);
             _loadMenu.SetActive(state == 2);
-            return;
             _confirmQuitMenu.SetActive(state == 3);
         }
 
@@ -220,6 +219,15 @@ namespace Logic.Menu
             UpdateMenuState(0);
             HideMenu();
             StartHidingText();
+        }
+
+        #endregion
+
+        #region Quit Menu
+
+        public void ConfirmQuit()
+        {
+            Application.Quit();
         }
 
         #endregion
