@@ -106,7 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputPins: []
-  _outputPins: []
+  _outputPins:
+  - {fileID: 2313199911487127585}
 --- !u!114 &2241045417304716545
 MonoBehaviour:
   m_ObjectHideFlags: 0
