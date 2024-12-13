@@ -22,6 +22,8 @@ namespace Logic.Files
                 Directory.CreateDirectory(SaveDirectory);
         }
 
+        public static bool Exists(string fileName) => File.Exists($"{SaveDirectory}/{fileName}{FILE_EXTENSION}");
+
         public static FileError SaveToFilePath(Action<TextUpdateArgs> statusUpdate = null)
         {
             RunStatusUpdate(statusUpdate, "Saving...");
@@ -70,6 +72,7 @@ namespace Logic.Files
             }
 
             ObjectStorage.Main.LoadMasterSaveProfile(file);
+            CurrentFilePath = $"{SaveDirectory}/{fileName}{FILE_EXTENSION}";
             return FileError.None;
         }
 

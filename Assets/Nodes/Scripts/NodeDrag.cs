@@ -1,3 +1,4 @@
+using Logic.Menu;
 using UnityEngine;
 
 namespace Logic.Nodes
@@ -7,6 +8,7 @@ namespace Logic.Nodes
         private Vector2 _difference = Vector2.zero;
         private bool _tempDrag = false;
         private float _buffer = 0f;
+        private bool _wasPaused = false;
 
         private const float DRAG_BUFFER = 0.07f;
 
@@ -15,6 +17,10 @@ namespace Logic.Nodes
             DragUntilMouseUp();
             if (_buffer < DRAG_BUFFER)
                 _buffer += Time.deltaTime;
+            if (!Input.GetMouseButton(0))
+                _wasPaused = false;
+            if (EscapeMenuNavigator.Main.Paused)
+                _wasPaused = true;
         }
 
         private void OnMouseDown()
@@ -25,6 +31,9 @@ namespace Logic.Nodes
 
         private void OnMouseDrag()
         {
+            if (_wasPaused)
+                return;
+
             if(_buffer >= DRAG_BUFFER)
                 transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - _difference;
         }
@@ -47,7 +56,7 @@ namespace Logic.Nodes
                 return;
 
             // Checks if the mouse is still being held down
-            if (!Input.GetMouseButton(0))
+            if (!Input.GetMouseButton(0) || EscapeMenuNavigator.Main.Paused)
             {
                 _tempDrag = false;
                 return;

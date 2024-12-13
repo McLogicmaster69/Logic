@@ -230,6 +230,17 @@ namespace Logic.Files
         /// Checks if a file exists
         /// </summary>
         /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static bool Exists(string fileName)
+        {
+            string path = Application.persistentDataPath + $"/{fileName}";
+            return File.Exists(path);
+        }
+
+        /// <summary>
+        /// Checks if a file exists
+        /// </summary>
+        /// <param name="fileName"></param>
         /// <param name="fileExtension"></param>
         /// <returns></returns>
         public static bool Exists(string fileName, string fileExtension)
