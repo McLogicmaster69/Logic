@@ -1,3 +1,4 @@
+using Logic.Menu;
 using UnityEngine;
 
 namespace Logic
@@ -12,11 +13,15 @@ namespace Logic
 
         private void Update()
         {
-            Tick();
+            if(!EscapeMenuNavigator.Main.Paused)
+                Tick();
         }
 
         private void OnMouseUpAsButton()
         {
+            if (EscapeMenuNavigator.Main.Paused)
+                return;
+
             if (_startPosition == transform.position)
                 ClickedNoDrag();
             else

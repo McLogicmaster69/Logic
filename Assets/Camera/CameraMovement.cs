@@ -1,3 +1,4 @@
+using Logic.Menu;
 using UnityEngine;
 
 namespace Logic.cam
@@ -20,6 +21,9 @@ namespace Logic.cam
 
         private void Update()
         {
+            if (EscapeMenuNavigator.Main.Paused)
+                return;
+
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
 

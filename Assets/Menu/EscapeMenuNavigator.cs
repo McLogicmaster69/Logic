@@ -12,6 +12,8 @@ namespace Logic.Menu
     {
         public static EscapeMenuNavigator Main { get; private set; }
 
+        public bool Paused => _visible;
+
         [Header("UI")]
         [SerializeField] private Button _saveButton;
         [SerializeField] private Button _nextLoadPageButton;
@@ -23,8 +25,12 @@ namespace Logic.Menu
         [SerializeField] private GameObject _menuObject;
         [SerializeField] private GameObject _backButton;
         [SerializeField] private GameObject _loadingMenu;
+        [SerializeField] private GameObject _filesMenu;
+        [SerializeField] private GameObject _confirmLoadMenu;
         [SerializeField] private GameObject _buttonObjects;
         [SerializeField] private GameObject _saveAsMenu;
+        [SerializeField] private GameObject _saveAsTab;
+        [SerializeField] private GameObject _confirmOverwriteTab;
         [SerializeField] private GameObject _loadMenu;
         [SerializeField] private GameObject _confirmQuitMenu;
         [SerializeField] private GameObject _filesParent;
@@ -39,6 +45,7 @@ namespace Logic.Menu
         private FileInfo[] _fileInfo;
         private Coroutine _hidingTextCoroutine;
         private List<GameObject> _loadFileObjects = new List<GameObject>();
+        private string _preparedFilePath = "";
 
         public const int LOAD_OBJECTS_PER_PAGE = 8;
         public const float LOAD_FILE_OBJECT_SPACE = 40f;
@@ -114,12 +121,19 @@ namespace Logic.Menu
 
         public void ReturnMainMenu() => UpdateMenuState(0);
 
-        public void SaveAsButton() => UpdateMenuState(1);
+        public void SaveAsButton()
+        {
+            UpdateMenuState(1);
+            _saveAsTab.SetActive(true);
+            _confirmOverwriteTab.SetActive(false);
+        }
 
         public void LoadButton()
         {
             UpdateMenuState(2);
             InitLoadMenu();
+            _filesMenu.SetActive(true);
+            _confirmLoadMenu.SetActive(false);
         }
 
         public void QuitButton() => UpdateMenuState(3);
@@ -141,18 +155,46 @@ namespace Logic.Menu
 
         public void SaveFileButton()
         {
-            if (string.IsNullOrEmpty(_saveFilePathInput.text))
+            _preparedFilePath = _saveFilePathInput.text;
+
+            if (string.IsNullOrEmpty(_preparedFilePath))
             {
                 UpdateStatus(new TextUpdateArgs("ERROR: Input file name") { Color = Color.red });
                 StartHidingText();
                 return;
             }
 
+            Debug.Log(SaveManager.Exists(_preparedFilePath));
+
+            if (SaveManager.Exists(_preparedFilePath))
+            {
+                _saveAsTab.SetActive(false);
+                _confirmOverwriteTab.SetActive(true);
+                return;
+            }
+
             UpdateMenuState(-1);
-            SaveManager.SaveToFilePath(_saveFilePathInput.text, UpdateStatus);
+            SaveManager.SaveToFilePath(_preparedFilePath, UpdateStatus);
             UpdateMenuState(0);
             HideMenu();
             StartHidingText();
+        }
+
+        public void ConfirmSave()
+        {
+            _saveAsTab.SetActive(true);
+            _confirmOverwriteTab.SetActive(false);
+            UpdateMenuState(-1);
+            SaveManager.SaveToFilePath(_preparedFilePath, UpdateStatus);
+            UpdateMenuState(0);
+            HideMenu();
+            StartHidingText();
+        }
+
+        public void CancelSave()
+        {
+            _saveAsTab.SetActive(true);
+            _confirmOverwriteTab.SetActive(false);
         }
 
         #endregion
@@ -214,8 +256,23 @@ namespace Logic.Menu
 
         public void LoadFile(string fileName)
         {
+            _preparedFilePath = fileName;
+            _filesMenu.SetActive(false);
+            _confirmLoadMenu.SetActive(true);
+        }
+
+        public void CancelLoad()
+        {
+            _filesMenu.SetActive(true);
+            _confirmLoadMenu.SetActive(false);
+        }
+
+        public void ConfirmLoad()
+        {
+            _filesMenu.SetActive(true);
+            _confirmLoadMenu.SetActive(false);
             UpdateMenuState(-1);
-            SaveManager.LoadFileFromPath(fileName, UpdateStatus);
+            SaveManager.LoadFileFromPath(_preparedFilePath, UpdateStatus);
             UpdateMenuState(0);
             HideMenu();
             StartHidingText();
