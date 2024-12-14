@@ -29,6 +29,7 @@ Gate and cable functions:
 - [ ] Multiselect
 - [ ] Copy and paste
 - [ ] Simplify cable layout coming from the same pin
+- [ ] Component properties
 
 Chips:
 - [ ] Built-in DFF Chip
@@ -46,10 +47,20 @@ UI:
 - [ ] Gate creation menu when hitting space or some keybind (like blender)
 - [ ] Selected component information window
 - [ ] Background
+- [x] Quit button
 - [x] Save / Load UI
 
+Save / Load:
+- [x] Save to existing file
+- [x] Save to new file
+- [x] Load from file
+- [x] Confirmation on save / load
+- [ ] Update save files
+- [ ] Export chip to file
+- [ ] Import chip from file
+- [ ] Package chips with project files
+
 Misc:
-- [x] Save / Load
 - [x] Camera functionality (moving, zooming etc)
 - [ ] Labels
 
@@ -63,14 +74,19 @@ V0.1:
 - Output components
 
 V0.2:
-- Additional selection tools
 - Save / Load
 - Save / Load UI
 
 V0.3:
-- Chips
+- Additional selection tools
+- Component properties
 
 V0.4:
+- Chips
+- Save / Load chip files
+- Package chip files with project files
+
+V0.5:
 - Additional UI
 - Labels
 - Simplify cables
